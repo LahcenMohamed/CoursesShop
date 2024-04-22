@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesShop.Service", "Cour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursesShop.Infrastructure", "CoursesShop.Infrastructre\CoursesShop.Infrastructure.csproj", "{826089F8-BBA1-4BB8-BAE8-8333F6CF17BE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83996161-6B14-4D35-A447-144A605BF8D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6D851343-146B-4593-8BBD-3692720544C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A07BC1B2-4B99-480C-8728-601138B79C5D} = {83996161-6B14-4D35-A447-144A605BF8D7}
+		{23727B34-4842-4E47-BD02-FF957EF520EE} = {83996161-6B14-4D35-A447-144A605BF8D7}
+		{5D8B2B20-F287-4D9B-9343-9BE317F898E4} = {83996161-6B14-4D35-A447-144A605BF8D7}
+		{F610F510-DD51-4CA4-A56E-D312A6C7C352} = {83996161-6B14-4D35-A447-144A605BF8D7}
+		{826089F8-BBA1-4BB8-BAE8-8333F6CF17BE} = {83996161-6B14-4D35-A447-144A605BF8D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {499B2158-148D-4C13-AF3C-C94E93DF0F50}
