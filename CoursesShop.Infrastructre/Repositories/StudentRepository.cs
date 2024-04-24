@@ -1,5 +1,6 @@
 ﻿using CoursesShop.Data.Entities;
 using CoursesShop.Infrastructure.Absracts;
+using CoursesShop.Infrastructure.Bases;
 using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace CoursesShop.Infrastructure.Repositories
 {
-    public sealed class StudentRepository(CoursesShopDbContext context) : IStudentRepository
+    public sealed class StudentRepository : BaseRepository<Student>, IStudentRepository
     {
-        private readonly CoursesShopDbContext _context = context;
-        public async Task<List<Student>> GetAllAsync()
+        private readonly  DbSet<Student> _students;
+        public StudentRepository(CoursesShopDbContext context):base(context)
         {
-            return await _context.Students.ToListAsync();
+            _students = _dbContext.Set<Student>();
         }
     }
 }

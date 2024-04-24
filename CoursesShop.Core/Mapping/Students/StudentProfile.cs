@@ -1,16 +1,20 @@
-﻿using CoursesShop.Core.Bases;
+﻿using AutoMapper;
 using CoursesShop.Core.Features.Students.Queries.Results;
 using CoursesShop.Data.Entities;
-using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoursesShop.Core.Features.Students.Queries.Models
+namespace CoursesShop.Core.Mapping.Students
 {
-    public sealed class GetAllStudentsQuery : IRequest<Response<List<GetStudentResponse>>>
+    public sealed partial class StudentProfile : Profile
     {
+        public StudentProfile()
+        {
+            GetStudentListMapping();
+        }
+
     }
 }

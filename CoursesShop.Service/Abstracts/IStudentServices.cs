@@ -10,5 +10,6 @@ namespace CoursesShop.Service.Abstracts
     public interface IStudentServices
     {
         public Task<List<Student>> GetAllAsync();
+        public Task<Student> GetByIdAsync(string Id);
     }
 }

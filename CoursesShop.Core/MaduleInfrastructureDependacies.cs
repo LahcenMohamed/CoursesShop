@@ -15,6 +15,7 @@ namespace CoursesShop.Infrastructure
         public static IServiceCollection AddCoreDependacies(this IServiceCollection service)
         {
             service.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+            service.AddAutoMapper(Assembly.GetExecutingAssembly());
             return service;
         }
     }

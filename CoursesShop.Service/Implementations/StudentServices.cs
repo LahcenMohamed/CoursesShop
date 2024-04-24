@@ -14,7 +14,13 @@ namespace CoursesShop.Service.Implementations
         private readonly IStudentRepository _studentRepository = studentRepository;
         public async Task<List<Student>> GetAllAsync()
         {
-            return await _studentRepository.GetAllAsync();
+            return await _studentRepository.GetTableNoTracking();
+        }
+
+        public async Task<Student> GetByIdAsync(string Id)
+        {
+            var student = await _studentRepository.GetByIdAsync(Id);
+            return student;
         }
     }
 }

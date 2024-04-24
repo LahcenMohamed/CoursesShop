@@ -1,4 +1,7 @@
-﻿using CoursesShop.Core.Features.Students.Queries.Models;
+﻿using AutoMapper;
+using CoursesShop.Core.Bases;
+using CoursesShop.Core.Features.Students.Queries.Models;
+using CoursesShop.Core.Features.Students.Queries.Results;
 using CoursesShop.Data.Entities;
 using CoursesShop.Service.Abstracts;
 using MediatR;
@@ -10,12 +13,15 @@ using System.Threading.Tasks;
 
 namespace CoursesShop.Core.Features.Students.Queries.Handlers
 {
-    public sealed class GetAllStudentsHandler(IStudentServices studentServices) : IRequestHandler<GetAllStudentsQuery, List<Student>>
+    public sealed class GetAllStudentsHandler(IStudentServices studentServices,IMapper mapper) :ResponseHandler , IRequestHandler<GetAllStudentsQuery,Response<List<GetStudentResponse>>>
     {
         private readonly IStudentServices _studentServices = studentServices;
-        public async Task<List<Student>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
+        private readonly IMapper _mapper = mapper; 
+        public async Task<Response<List<GetStudentResponse>>> Handle(GetAllStudentsQuery request, CancellationToken cancellationToken)
         {
-            return await _studentServices.GetAllAsync();
+            var students = await _studentServices.GetAllAsync();
+            var studentsMapper = _mapper.Map<List<GetStudentResponse>>(students);
+            return Success(studentsMapper);
         }
     }
 }

@@ -17,5 +17,11 @@ namespace CoursesShop.API.Controllers
             var response = await _mediator.Send(new GetAllStudentsQuery());
             return Ok(response);
         }
+        [HttpGet("{Id:guid}")]
+        public async Task<IActionResult> GetById(string Id)
+        {
+            var response = await _mediator.Send(new GetStudentByIdQuery() { Id = Id });
+            return Ok(response);
+        }
     }
 }
