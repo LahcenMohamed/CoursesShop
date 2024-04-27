@@ -15,7 +15,7 @@ namespace CoursesShop.Infrastructure.Absracts
         IDbContextTransaction BeginTransaction();
         void Commit();
         void RollBack();
-        Task<List<TModel>> GetTableNoTracking();
+        IQueryable<TModel> GetTableNoTracking();
         Task<List<TModel>> GetTableAsTracking();
         Task<TModel> AddAsync(TModel entity);
         Task AddRangeAsync(ICollection<TModel> entities);

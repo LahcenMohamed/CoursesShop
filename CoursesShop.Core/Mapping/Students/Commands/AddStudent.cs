@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CoursesShop.Core.Features.Students.Queries.Results;
+using CoursesShop.Core.Features.Students.Commands.Models;
 using CoursesShop.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,11 +11,9 @@ namespace CoursesShop.Core.Mapping.Students
 {
     public sealed partial class StudentProfile : Profile
     {
-        public StudentProfile()
+        public void AddStudentMapping()
         {
-            GetStudentListMapping();
-            AddStudentMapping();
+            CreateMap<AddStudentRequest,Student>();
         }
-
     }
 }

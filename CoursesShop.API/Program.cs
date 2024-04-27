@@ -1,9 +1,10 @@
+using CoursesShop.Core.Middleware;
 using CoursesShop.Data.Identity;
+using CoursesShop.Infrastructure;
+using CoursesShop.Service;
 using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using CoursesShop.Infrastructure;
-using CoursesShop.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

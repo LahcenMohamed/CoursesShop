@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace CoursesShop.Core.Features.Students.Queries.Handlers
 {
-    public sealed class GetStudentByIdHandler(IStudentServices studentServices,IMapper mapper) : ResponseHandler, IRequestHandler<GetStudentByIdQuery, Response<GetStudentResponse>>
+    public sealed class GetStudentByIdHandler(IStudentServices studentServices,IMapper mapper) : ResponseHandler, IRequestHandler<GetStudentByIdRequest, Response<GetStudentResponse>>
     {
         private readonly IStudentServices _studentServices = studentServices;
         private readonly IMapper _mapper = mapper;
 
-        public async Task<Response<GetStudentResponse>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<GetStudentResponse>> Handle(GetStudentByIdRequest request, CancellationToken cancellationToken)
         {
             var student = await _studentServices.GetByIdAsync(request.Id);
             if (student is null)

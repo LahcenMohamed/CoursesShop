@@ -29,9 +29,9 @@ namespace CoursesShop.Infrastructure.Bases
         }
 
 
-        public async Task<List<TModel>> GetTableNoTracking()
+        public IQueryable<TModel> GetTableNoTracking()
         {
-            return await _dbContext.Set<TModel>().AsNoTracking().ToListAsync();
+            return _dbContext.Set<TModel>().AsNoTracking().AsQueryable();
         }
 
 
@@ -43,7 +43,7 @@ namespace CoursesShop.Infrastructure.Bases
         }
         public virtual async Task<TModel> AddAsync(TModel entity)
         {
-            await _dbContext.Set<TModel>().AddAsync(entity);
+            _dbContext.Set<TModel>().Add(entity);
             await _dbContext.SaveChangesAsync();
 
             return entity;

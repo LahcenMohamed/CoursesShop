@@ -1,6 +1,5 @@
 ﻿using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Students.Queries.Results;
-using CoursesShop.Data.Entities;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace CoursesShop.Core.Features.Students.Queries.Models
 {
-    public sealed class GetAllStudentsQuery : IRequest<Response<List<GetStudentResponse>>>
+    public sealed class GetStudentByIdRequest : IRequest<Response<GetStudentResponse>>
     {
+        public required string Id { get; set; }
     }
 }
