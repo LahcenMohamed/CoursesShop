@@ -15,8 +15,13 @@ namespace CoursesShop.Core.Features.Students.Queries.Handlers
 
         public async Task<PaginatedResult<Student>> Handle(GetStudentPagintedRequest request, CancellationToken cancellationToken)
         {
-            var students = await _studentServices.GetAllAsQueryable().ToPaginatedListAsync(request.PageNumber, request.PageSize);
-            return students;
+            if (request.Search is null)
+            {
+                return await _studentServices.GetAllAsQueryable()
+                                             .ToPaginatedListAsync(request.PageNumber, request.PageSize);
+            }
+            return await _studentServices.FillterAsQueryable(request.OrderBy, request.Search)
+                                         .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }
 }
