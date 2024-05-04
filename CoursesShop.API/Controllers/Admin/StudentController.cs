@@ -3,9 +3,9 @@ using CoursesShop.Core.Features.Students.Commands.Models;
 using CoursesShop.Core.Features.Students.Queries.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoursesShop.API.Controllers
+namespace CoursesShop.API.Controllers.Admin
 {
-    [Route("api/[controller]s")]
+    [Route("api/Admin/[controller]s")]
     [ApiController]
     public class StudentController : AppControllerBase
     {
@@ -28,13 +28,6 @@ namespace CoursesShop.API.Controllers
         public async Task<IActionResult> GetById(string Id)
         {
             var response = await Mediator.Send(new GetStudentByIdRequest() { Id = Id });
-            return NewResult(response);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Create([FromForm] AddStudentRequest studentRequest)
-        {
-            var response = await Mediator.Send(studentRequest);
             return NewResult(response);
         }
 

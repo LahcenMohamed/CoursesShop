@@ -1,5 +1,4 @@
 ﻿using CoursesShop.Data.Entities;
-using CoursesShop.Data.Helpers;
 using CoursesShop.Infrastructure.Absracts;
 using CoursesShop.Service.Abstracts;
 using Microsoft.EntityFrameworkCore;
@@ -48,17 +47,9 @@ namespace CoursesShop.Service.Implementations
             return _studentRepository.GetTableNoTracking();
         }
 
-        public IQueryable<Student> FillterAsQueryable(StudentOrderingEnum orderBy, string search)
+        public IQueryable<Student> FillterAsQueryable(string search)
         {
-            var querable = _studentRepository.GetTableNoTracking().Where(x => x.FullName.Contains(search) || x.Email.Contains(search));
-
-            return orderBy switch
-            {
-                StudentOrderingEnum.Id => querable.OrderBy(x => x.Id),
-                StudentOrderingEnum.FullName => querable.OrderBy(x => x.FullName),
-                StudentOrderingEnum.Email => querable.OrderBy(x => x.Email),
-                _ => querable
-            };
+            return _studentRepository.GetTableNoTracking().Where(x => x.FullName.Contains(search) || x.Email.Contains(search));
         }
     }
 }

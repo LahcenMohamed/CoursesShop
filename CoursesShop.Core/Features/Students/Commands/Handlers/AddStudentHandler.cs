@@ -16,7 +16,7 @@ namespace CoursesShop.Core.Features.Students.Commands.Handlers
             var studentMappeing = _mapper.Map<Student>(request);
             await _studentServices.AddStudent(studentMappeing);
 
-            return Created("studentMappeing");
+            return Created(studentMappeing.Id);
         }
     }
 }

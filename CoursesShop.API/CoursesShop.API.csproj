@@ -30,4 +30,8 @@
     <ProjectReference Include="..\CoursesShop.Service\CoursesShop.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Teachers\" />
+  </ItemGroup>
+
 </Project>

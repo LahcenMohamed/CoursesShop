@@ -20,7 +20,7 @@ namespace CoursesShop.Core.Features.Students.Queries.Handlers
                 return await _studentServices.GetAllAsQueryable()
                                              .ToPaginatedListAsync(request.PageNumber, request.PageSize);
             }
-            return await _studentServices.FillterAsQueryable(request.OrderBy, request.Search)
+            return await _studentServices.FillterAsQueryable(request.Search)
                                          .ToPaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }
