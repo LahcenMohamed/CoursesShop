@@ -11,6 +11,7 @@ namespace CoursesShop.Service
         {
             service.AddTransient<IStudentServices, StudentServices>();
             service.AddTransient<ITeacherServices, TeacherServices>();
+            service.AddTransient<IUserServices, UserServices>();
             service.AddTransient<IFileServices, FileServices>();
             return service;
         }

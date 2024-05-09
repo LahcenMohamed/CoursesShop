@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Students.Queries.Models;
 using CoursesShop.Core.Wrapper;
 using CoursesShop.Data.Entities;
@@ -8,7 +7,7 @@ using MediatR;
 
 namespace CoursesShop.Core.Features.Students.Queries.Handlers
 {
-    public sealed class GetStudentPaginatedHandler(IStudentServices studentServices, IMapper mapper) : ResponseHandler, IRequestHandler<GetStudentPagintedRequest, PaginatedResult<Student>>
+    public sealed class GetStudentPaginatedHandler(IStudentServices studentServices, IMapper mapper) : IRequestHandler<GetStudentPagintedRequest, PaginatedResult<Student>>
     {
         private readonly IStudentServices _studentServices = studentServices;
         private readonly IMapper _mapper = mapper;
