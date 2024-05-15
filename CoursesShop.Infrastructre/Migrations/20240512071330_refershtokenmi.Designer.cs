@@ -4,6 +4,7 @@ using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursesShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CoursesShopDbContext))]
-    partial class CoursesShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240512071330_refershtokenmi")]
+    partial class refershtokenmi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +30,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("45c68903-98b0-4f30-baac-0ded6ba1c619");
+                        .HasDefaultValue("52369228-02cd-4bec-b422-4837f10f7a33");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -62,7 +65,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("20eaaa35-825c-4265-b9bd-da4ed41bca5a");
+                        .HasDefaultValue("35fa7070-9eab-4424-80e1-93754aae9322");
 
                     b.Property<string>("CourseId")
                         .IsRequired()
@@ -94,7 +97,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c8d959b2-0181-4962-891d-c00c2351dcef");
+                        .HasDefaultValue("53ba569b-43a0-4372-b61e-b8a284937017");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -124,7 +127,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c22c08aa-dda0-481e-a435-167d1bb5abe5");
+                        .HasDefaultValue("6f48a2d6-faab-4cba-8406-eaebc6366e73");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -146,7 +149,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("4dfa28b7-3977-4257-8f3b-f7d551f0268f");
+                        .HasDefaultValue("5cefb1c9-6dd0-4149-9597-1660d1cb35c2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -244,15 +247,15 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Identity.UserRefreshToken", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("31a9707f-4ed0-4591-ace6-904ec6162c32");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ExpiryDate")
@@ -275,7 +278,7 @@ namespace CoursesShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.ToTable("UserRefreshTokens");
                 });
@@ -471,9 +474,7 @@ namespace CoursesShop.Infrastructure.Migrations
                 {
                     b.HasOne("CoursesShop.Data.Identity.ApplicationUser", "ApplicationUser")
                         .WithMany("UserRefreshTokens")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId1");
 
                     b.Navigation("ApplicationUser");
                 });

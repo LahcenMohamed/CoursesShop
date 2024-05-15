@@ -4,6 +4,7 @@ using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursesShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CoursesShopDbContext))]
-    partial class CoursesShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240510075457_addType")]
+    partial class addType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +28,7 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Course", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("45c68903-98b0-4f30-baac-0ded6ba1c619");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -60,9 +61,7 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Receipt", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("20eaaa35-825c-4265-b9bd-da4ed41bca5a");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CourseId")
                         .IsRequired()
@@ -92,9 +91,7 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Review", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c8d959b2-0181-4962-891d-c00c2351dcef");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -122,9 +119,7 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Student", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c22c08aa-dda0-481e-a435-167d1bb5abe5");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -144,9 +139,7 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Teacher", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("4dfa28b7-3977-4257-8f3b-f7d551f0268f");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -239,45 +232,6 @@ namespace CoursesShop.Infrastructure.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("CoursesShop.Data.Identity.UserRefreshToken", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("31a9707f-4ed0-4591-ace6-904ec6162c32");
-
-                    b.Property<DateTime>("AddedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ApplicationUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsRevoked")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("JwtId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.ToTable("UserRefreshTokens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -467,17 +421,6 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Navigation("Student");
                 });
 
-            modelBuilder.Entity("CoursesShop.Data.Identity.UserRefreshToken", b =>
-                {
-                    b.HasOne("CoursesShop.Data.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany("UserRefreshTokens")
-                        .HasForeignKey("ApplicationUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApplicationUser");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -546,11 +489,6 @@ namespace CoursesShop.Infrastructure.Migrations
             modelBuilder.Entity("CoursesShop.Data.Entities.Teacher", b =>
                 {
                     b.Navigation("Courses");
-                });
-
-            modelBuilder.Entity("CoursesShop.Data.Identity.ApplicationUser", b =>
-                {
-                    b.Navigation("UserRefreshTokens");
                 });
 #pragma warning restore 612, 618
         }

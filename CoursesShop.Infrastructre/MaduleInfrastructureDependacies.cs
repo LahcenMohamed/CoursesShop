@@ -13,6 +13,7 @@ namespace CoursesShop.Infrastructure
             service.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             service.AddTransient<IStudentRepository, StudentRepository>();
             service.AddTransient<ITeacherRepository, TeacherRepository>();
+            service.AddTransient<IRefershTokenRepository, RefershTokenRepository>();
 
             return service;
         }

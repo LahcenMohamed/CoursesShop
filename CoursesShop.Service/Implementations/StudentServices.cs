@@ -11,7 +11,6 @@ namespace CoursesShop.Service.Implementations
 
         public async Task AddStudent(Student student)
         {
-            student.Id = Guid.NewGuid().ToString();
             await _studentRepository.AddAsync(student);
         }
 

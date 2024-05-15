@@ -1,12 +1,14 @@
 ﻿using CoursesShop.API.Bases;
 using CoursesShop.Core.Features.Students.Commands.Models;
 using CoursesShop.Core.Features.Students.Queries.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursesShop.API.Controllers.Admin
 {
     [Route("api/Admin/[controller]s")]
     [ApiController]
+    [Authorize]
     public class StudentController : AppControllerBase
     {
 

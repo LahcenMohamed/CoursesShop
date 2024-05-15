@@ -4,6 +4,7 @@ using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursesShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CoursesShopDbContext))]
-    partial class CoursesShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240512075410_appid1")]
+    partial class appid1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +30,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("45c68903-98b0-4f30-baac-0ded6ba1c619");
+                        .HasDefaultValue("7dcb49cf-e1dd-45d7-83a0-07e6057a057f");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -62,7 +65,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("20eaaa35-825c-4265-b9bd-da4ed41bca5a");
+                        .HasDefaultValue("1b4a0630-9ec4-48da-8bb8-00ca2d654d09");
 
                     b.Property<string>("CourseId")
                         .IsRequired()
@@ -94,7 +97,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c8d959b2-0181-4962-891d-c00c2351dcef");
+                        .HasDefaultValue("6ba84a04-7930-443f-abd2-420e976f8c78");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -124,7 +127,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c22c08aa-dda0-481e-a435-167d1bb5abe5");
+                        .HasDefaultValue("92fbf037-3cae-436a-b822-3a452f620599");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -146,7 +149,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("4dfa28b7-3977-4257-8f3b-f7d551f0268f");
+                        .HasDefaultValue("1eecd3ae-3d6f-483d-95cb-207ae695552c");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -246,7 +249,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("31a9707f-4ed0-4591-ace6-904ec6162c32");
+                        .HasDefaultValue("7778d841-bd85-44b3-b00c-f08298614a41");
 
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");

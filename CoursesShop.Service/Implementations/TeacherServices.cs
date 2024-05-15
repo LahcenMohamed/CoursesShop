@@ -18,7 +18,6 @@ namespace CoursesShop.Service.Implementations
                 ImageUrl = await _fileServices.UploadImage("Images/Teachers", Image);
             }
             teacher.imageUrl = ImageUrl;
-            teacher.Id = Guid.NewGuid().ToString();
             await _teacherRepository.AddAsync(teacher);
         }
 

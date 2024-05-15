@@ -37,9 +37,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ErrorHandlerMiddleware>();
+
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

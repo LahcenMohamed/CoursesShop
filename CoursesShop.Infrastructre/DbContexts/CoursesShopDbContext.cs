@@ -1,8 +1,8 @@
-﻿using CoursesShop.Infrastructure.Configurations;
-using CoursesShop.Data.Entities;
+﻿using CoursesShop.Data.Entities;
+using CoursesShop.Data.Identity;
+using CoursesShop.Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using CoursesShop.Data.Identity;
 
 
 namespace ECommerceCourse.DataAccess.DbContexts
@@ -14,9 +14,10 @@ namespace ECommerceCourse.DataAccess.DbContexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
         public CoursesShopDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,6 +27,7 @@ namespace ECommerceCourse.DataAccess.DbContexts
             builder.ApplyConfiguration(new ReceiptConfiguration());
             builder.ApplyConfiguration(new TeacherConfiguration());
             builder.ApplyConfiguration(new StudentConfiguration());
+            builder.ApplyConfiguration(new UserRefreshTokenConfiguration());
             base.OnModelCreating(builder);
         }
     }

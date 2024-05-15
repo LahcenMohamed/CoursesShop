@@ -4,6 +4,7 @@ using ECommerceCourse.DataAccess.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoursesShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CoursesShopDbContext))]
-    partial class CoursesShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240514145633_testt")]
+    partial class testt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,7 +30,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("45c68903-98b0-4f30-baac-0ded6ba1c619");
+                        .HasDefaultValue("a995ec1f-2015-42bc-a255-3ce061a1fc14");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -62,7 +65,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("20eaaa35-825c-4265-b9bd-da4ed41bca5a");
+                        .HasDefaultValue("d4966127-cdb5-4be8-a0c1-217fa4762db0");
 
                     b.Property<string>("CourseId")
                         .IsRequired()
@@ -94,7 +97,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c8d959b2-0181-4962-891d-c00c2351dcef");
+                        .HasDefaultValue("984f30c2-3c93-4185-a383-1971ef4d7c9a");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -124,7 +127,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("c22c08aa-dda0-481e-a435-167d1bb5abe5");
+                        .HasDefaultValue("0290c24f-e7a9-4164-9fd9-6c5bc1a65795");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -146,7 +149,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("4dfa28b7-3977-4257-8f3b-f7d551f0268f");
+                        .HasDefaultValue("2f0f35de-ea88-46d3-a363-7a2f16d3e264");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -222,6 +225,7 @@ namespace CoursesShop.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TypeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
@@ -246,7 +250,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("31a9707f-4ed0-4591-ace6-904ec6162c32");
+                        .HasDefaultValue("0dc5c755-043f-4def-86ca-c8a1471ee93f");
 
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");

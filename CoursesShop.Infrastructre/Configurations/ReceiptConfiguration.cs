@@ -8,6 +8,8 @@ namespace CoursesShop.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Receipt> builder)
         {
+            builder.Property(x => x.Id).HasDefaultValue(Guid.NewGuid().ToString());
+
             builder.Property(e => e.DateAndTime)
                    .HasDefaultValueSql("GETDATE()");
 

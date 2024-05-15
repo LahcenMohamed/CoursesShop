@@ -44,6 +44,7 @@ namespace CoursesShop.Service.Implementations
 
         }
 
+
         public async Task<List<ApplicationUser>> GetAll()
         {
             return await _userManager.Users.Select(x => new ApplicationUser { Id = x.Id, UserName = x.UserName, Email = x.Email }).ToListAsync();
@@ -57,10 +58,19 @@ namespace CoursesShop.Service.Implementations
         {
             return await _userManager.FindByIdAsync(Id);
         }
+        public async Task<ApplicationUser> GetByUserName(string UserName)
+        {
+            return await _userManager.FindByNameAsync(UserName);
+        }
 
         public bool isExistId(string Id)
         {
             return _userManager.Users.Any(x => x.Id == Id);
+        }
+
+        public bool isUser(string userName)
+        {
+            return _userManager.Users.Any(u => u.UserName == userName);
         }
 
         public IQueryable<ApplicationUser> UsersFilltering(string search)

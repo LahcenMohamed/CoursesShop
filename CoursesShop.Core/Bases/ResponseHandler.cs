@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CoursesShop.Core.Bases
+﻿namespace CoursesShop.Core.Bases
 {
     public class ResponseHandler
     {
@@ -28,13 +22,13 @@ namespace CoursesShop.Core.Bases
                 Meta = Meta
             };
         }
-        public Response<T> Unauthorized<T>()
+        public Response<T> Unauthorized<T>(string message = null)
         {
             return new Response<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.Unauthorized,
                 Succeeded = true,
-                Message = "UnAuthorized"
+                Message = message is null ? "UnAuthorized" : message
             };
         }
         public Response<T> BadRequest<T>(string Message = null)
