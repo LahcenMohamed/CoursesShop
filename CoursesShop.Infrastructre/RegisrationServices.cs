@@ -1,6 +1,6 @@
 ﻿using CoursesShop.Data.Helpers;
 using CoursesShop.Data.Identity;
-using ECommerceCourse.DataAccess.DbContexts;
+using CoursesShop.Infrastructure.DbContexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

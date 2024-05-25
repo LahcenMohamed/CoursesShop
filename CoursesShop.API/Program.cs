@@ -1,6 +1,9 @@
 using CoursesShop.Core.Middleware;
+using CoursesShop.Data.Identity;
 using CoursesShop.Infrastructure;
+using CoursesShop.Infrastructure.Seeder;
 using CoursesShop.Service;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +31,14 @@ builder.Services.AddCoreDependacies();
 #endregion
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    await RoleSeeder.SeedAsync(roleManager);
+    await UserSeeder.SeedAsync(userManager);
+}
+
 app.UseCors("AllowAny");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

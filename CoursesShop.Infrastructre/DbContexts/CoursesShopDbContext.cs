@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace ECommerceCourse.DataAccess.DbContexts
+namespace CoursesShop.Infrastructure.DbContexts
 {
     public sealed class CoursesShopDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,7 +17,6 @@ namespace ECommerceCourse.DataAccess.DbContexts
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
         public CoursesShopDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

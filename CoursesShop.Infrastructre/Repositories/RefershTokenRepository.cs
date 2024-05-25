@@ -1,7 +1,7 @@
 ﻿using CoursesShop.Data.Identity;
 using CoursesShop.Infrastructure.Bases;
+using CoursesShop.Infrastructure.DbContexts;
 using CoursesShop.Infrastructure.Interfaces;
-using ECommerceCourse.DataAccess.DbContexts;
 
 namespace CoursesShop.Infrastructure.Repositories
 {

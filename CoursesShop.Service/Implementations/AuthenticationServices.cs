@@ -28,7 +28,7 @@ namespace CoursesShop.Service.Implementations
             var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             if (result.Succeeded)
             {
-                var (token, accessToken) = GetToken(user);
+                var (token, accessToken) = await GetToken(user);
                 var refershtoken = GetRefreshToken(user.UserName);
 
                 var userRefreshToken = new UserRefreshToken
@@ -59,7 +59,7 @@ namespace CoursesShop.Service.Implementations
 
         public async Task<JwtAuthResult> GetRefreshTokenAsync(ApplicationUser user, JwtSecurityToken jwtToken, DateTime? expiryDate, string refreshToken)
         {
-            var (jwtSecurityToken, newToken) = GetToken(user);
+            var (jwtSecurityToken, newToken) = await GetToken(user);
 
             var refreshTokenResult = new RefreshToken
             {
@@ -148,16 +148,18 @@ namespace CoursesShop.Service.Implementations
             return new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
         }
 
-        private (JwtSecurityToken, string) GetToken(ApplicationUser applicationUser)
+        private async Task<(JwtSecurityToken, string)> GetToken(ApplicationUser applicationUser)
         {
             var claims = new List<Claim>
                 {
-                    new Claim("Id",applicationUser.Id),
-                    new Claim("UserName",applicationUser.UserName),
-                    new Claim("Email",applicationUser.Email),
-                    new Claim("Type",applicationUser.Type),
+                    new Claim(ClaimTypes.NameIdentifier,applicationUser.Id),
+                    new Claim(ClaimTypes.Name,applicationUser.UserName),
+                    new Claim(ClaimTypes.Email,applicationUser.Email),
+                    new Claim(ClaimTypes.Role,"Admin"),
                     new Claim("TypeId",applicationUser.TypeId ?? "Admin")
                 };
+            var roles = await _userManager.GetRolesAsync(applicationUser);
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
             var token = new JwtSecurityToken(issuer: _jwtSettings.Issuer,
                                              audience: _jwtSettings.Audience,
                                              claims: claims,
@@ -185,7 +187,5 @@ namespace CoursesShop.Service.Implementations
             randomNumberGenerate.GetBytes(randomNumber);
             return Convert.ToBase64String(randomNumber);
         }
-
-
     }
 }

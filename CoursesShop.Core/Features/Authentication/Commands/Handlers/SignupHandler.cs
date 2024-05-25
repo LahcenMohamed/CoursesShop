@@ -1,23 +1,26 @@
-﻿using CoursesShop.Core.Bases;
+﻿using AutoMapper;
+using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Authentication.Commands.Requests;
-using CoursesShop.Data.Results;
+using CoursesShop.Data.Identity;
 using CoursesShop.Service.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Authentication.Commands.Handlers
 {
-    public sealed class SignupHandler(IAuthenticationServices authenticationServices) : ResponseHandler, IRequestHandler<SignupRequest, Response<JwtAuthResult>>
+    public sealed class SignupHandler(IUserServices userServices, IMapper mapper) : ResponseHandler, IRequestHandler<SignupRequest, Response<string>>
     {
-        private readonly IAuthenticationServices _authenticationServices = authenticationServices;
+        private readonly IUserServices _userServices = userServices;
+        private readonly IMapper _mapper = mapper;
 
-        public async Task<Response<JwtAuthResult>> Handle(SignupRequest request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(SignupRequest request, CancellationToken cancellationToken)
         {
-            var token = await _authenticationServices.SignupAsync(request.UserName, request.Password);
-            if (token is null)
+            var user = _mapper.Map<ApplicationUser>(request);
+            var response = await _userServices.Add(user, request.Password, request.Type);
+            if (response.Contains("Error"))
             {
-                return Unauthorized<JwtAuthResult>();
+                return BadRequest<string>(response);
             }
-            return Success(token);
+            return Created(response);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using CoursesShop.Core.Bases;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 
 namespace CoursesShop.Core.Features.User.Commands.Requsets
 {
@@ -9,8 +8,5 @@ namespace CoursesShop.Core.Features.User.Commands.Requsets
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        [AllowedValues("Admin", "Teacher", "Student")]
-        public string Type { get; set; }
-        public string? TypeId { get; set; }
     }
 }

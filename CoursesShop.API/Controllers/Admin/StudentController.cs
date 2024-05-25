@@ -8,7 +8,7 @@ namespace CoursesShop.API.Controllers.Admin
 {
     [Route("api/Admin/[controller]s")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class StudentController : AppControllerBase
     {
 
