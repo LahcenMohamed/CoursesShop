@@ -29,8 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Authorization\Queries\" />
-    <Folder Include="Features\Teachers\Queries\Handlers\" />
-    <Folder Include="Features\Teachers\Queries\Requests\" />
     <Folder Include="Features\Teachers\Queries\Results\" />
     <Folder Include="Mapping\Roles\Queries\" />
     <Folder Include="Mapping\Teachers\Queries\" />
