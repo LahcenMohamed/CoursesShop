@@ -1,5 +1,5 @@
 ﻿using CoursesShop.Core.Features.User.Commands.Requsets;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using FluentValidation;
 
 namespace CoursesShop.Core.Features.User.Commands.Validators

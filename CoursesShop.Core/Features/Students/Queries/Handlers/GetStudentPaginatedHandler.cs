@@ -1,7 +1,7 @@
 ﻿using CoursesShop.Core.Features.Students.Queries.Models;
 using CoursesShop.Core.Wrapper;
 using CoursesShop.Data.Entities;
-using CoursesShop.Service.Abstracts;
+using CoursesShop.Service.EntityServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Students.Queries.Handlers

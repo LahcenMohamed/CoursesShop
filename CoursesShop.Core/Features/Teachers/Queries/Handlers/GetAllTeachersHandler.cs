@@ -1,12 +1,12 @@
 ﻿using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Teachers.Queries.Requests;
 using CoursesShop.Data.Entities;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.EntityServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Teachers.Queries.Handlers
 {
-    public sealed class GetAllTeachersHandler(ITeacherServices teacherServices) : ResponseHandler, IRequestHandler<GetAllTeachersRequest, Response<List<Teacher>>>
+    public sealed class GetAllCoursesHandler(ITeacherServices teacherServices) : ResponseHandler, IRequestHandler<GetAllTeachersRequest, Response<List<Teacher>>>
     {
         private readonly ITeacherServices _teacherServices = teacherServices;
 

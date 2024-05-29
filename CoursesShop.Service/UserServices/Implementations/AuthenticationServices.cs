@@ -2,14 +2,14 @@
 using CoursesShop.Data.Identity;
 using CoursesShop.Data.Results;
 using CoursesShop.Infrastructure.Interfaces;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.UserServices.Implementations
 {
     public sealed class AuthenticationServices(SignInManager<ApplicationUser> signInManager,
                                                UserManager<ApplicationUser> userManager,

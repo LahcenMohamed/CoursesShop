@@ -2,7 +2,7 @@
 using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Students.Commands.Models;
 using CoursesShop.Data.Entities;
-using CoursesShop.Service.Abstracts;
+using CoursesShop.Service.EntityServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Students.Commands.Handlers

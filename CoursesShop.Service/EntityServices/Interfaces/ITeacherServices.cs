@@ -1,7 +1,7 @@
 ﻿using CoursesShop.Data.Entities;
 using Microsoft.AspNetCore.Http;
 
-namespace CoursesShop.Service.Interfaces
+namespace CoursesShop.Service.EntityServices.Interfaces
 {
     public interface ITeacherServices
     {

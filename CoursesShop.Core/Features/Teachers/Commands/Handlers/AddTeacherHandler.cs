@@ -2,7 +2,7 @@
 using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Teachers.Commands.Requests;
 using CoursesShop.Data.Entities;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.EntityServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Teachers.Commands.Handlers

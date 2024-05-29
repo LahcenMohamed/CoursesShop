@@ -27,11 +27,17 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("2690386d-3bd4-40d5-a122-8b29fb07fa5a");
+                        .HasDefaultValue("bca66c43-4e00-4926-9de4-1136648494aa");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("/Images/Courses/DefultCourse.jpg");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -62,7 +68,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("137c5413-6cea-408e-8da4-067150b3e0d9");
+                        .HasDefaultValue("21908eda-bfd2-4955-92bb-f3f3375a9ec5");
 
                     b.Property<string>("CourseId")
                         .IsRequired()
@@ -94,7 +100,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("7b3bbefa-3fb5-403f-b9dd-6726a1cca7c6");
+                        .HasDefaultValue("6f349303-f015-43c9-90f2-99f58d5c04f0");
 
                     b.Property<string>("Comment")
                         .HasColumnType("nvarchar(max)");
@@ -124,7 +130,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("caf898eb-e1bd-4a41-a7bf-3abf59602c60");
+                        .HasDefaultValue("d509422b-e614-477f-9569-6d79116c4724");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -146,7 +152,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("2d4f094f-03d7-4ea1-9177-ad02d5bf1820");
+                        .HasDefaultValue("bd9c2285-863c-4251-a9e6-ce7f31e6d1af");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -245,7 +251,7 @@ namespace CoursesShop.Infrastructure.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)")
-                        .HasDefaultValue("4dff158a-d2a7-4c02-a815-85bd9aa01e9e");
+                        .HasDefaultValue("290bb156-2509-4fba-a77d-eaf9c3a5b31f");
 
                     b.Property<DateTime>("AddedTime")
                         .HasColumnType("datetime2");

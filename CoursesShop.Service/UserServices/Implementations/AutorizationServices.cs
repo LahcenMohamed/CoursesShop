@@ -1,7 +1,7 @@
-﻿using CoursesShop.Service.Interfaces;
+﻿using CoursesShop.Service.UserServices.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.UserServices.Implementations
 {
     public sealed class AutorizationServices(RoleManager<IdentityRole> roleManager) : IAuthorizationServices
     {

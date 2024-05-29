@@ -2,7 +2,7 @@
 using CoursesShop.Data.Results;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace CoursesShop.Service.Interfaces
+namespace CoursesShop.Service.UserServices.Interfaces
 {
     public interface IAuthenticationServices
     {

@@ -4,7 +4,7 @@ using CoursesShop.Core.Features.User.Queries.Requsets;
 using CoursesShop.Core.Features.User.Queries.Results;
 using CoursesShop.Core.Wrapper;
 using CoursesShop.Data.Identity;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.User.Queries.Handlers

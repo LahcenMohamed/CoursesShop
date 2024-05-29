@@ -1,5 +1,5 @@
 ﻿using CoursesShop.Core.Features.Authentication.Queries.Requests;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using FluentValidation;
 
 namespace CoursesShop.Core.Features.Authentication.Queries.Validators

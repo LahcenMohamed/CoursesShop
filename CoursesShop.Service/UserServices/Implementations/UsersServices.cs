@@ -1,13 +1,13 @@
 ﻿using CoursesShop.Data.Identity;
 using CoursesShop.Infrastructure.DbContexts;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.UserServices.Implementations
 {
-    public sealed class UserServices(UserManager<ApplicationUser> userManager,
+    public sealed class UsersServices(UserManager<ApplicationUser> userManager,
                                      RoleManager<IdentityRole> roleManager,
                                      IEmailServices emailServices,
                                      IHttpContextAccessor httpContextAccessor,

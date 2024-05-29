@@ -3,7 +3,7 @@ using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.User.Queries.Requsets;
 using CoursesShop.Core.Features.User.Queries.Results;
 using CoursesShop.Data.Identity;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.User.Queries.Handlers

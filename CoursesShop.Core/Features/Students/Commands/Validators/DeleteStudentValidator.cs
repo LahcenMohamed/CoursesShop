@@ -1,5 +1,5 @@
 ﻿using CoursesShop.Core.Features.Students.Commands.Models;
-using CoursesShop.Service.Abstracts;
+using CoursesShop.Service.EntityServices.Interfaces;
 using FluentValidation;
 
 namespace CoursesShop.Core.Features.Students.Commands.Validators

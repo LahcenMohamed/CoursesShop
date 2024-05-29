@@ -1,10 +1,11 @@
 ﻿using CoursesShop.Data.Entities;
 using CoursesShop.Infrastructure.Interfaces;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.EntityServices.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.EntityServices.Implementations
 {
     public sealed class TeacherServices(ITeacherRepository teacherRepository, IFileServices fileServices) : ITeacherServices
     {

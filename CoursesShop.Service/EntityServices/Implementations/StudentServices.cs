@@ -1,9 +1,9 @@
 ﻿using CoursesShop.Data.Entities;
 using CoursesShop.Infrastructure.Absracts;
-using CoursesShop.Service.Abstracts;
+using CoursesShop.Service.EntityServices.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.EntityServices.Implementations
 {
     public sealed class StudentServices(IStudentRepository studentRepository) : IStudentServices
     {

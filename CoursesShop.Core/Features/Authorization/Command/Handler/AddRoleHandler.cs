@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Authorization.Command.Requests;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 

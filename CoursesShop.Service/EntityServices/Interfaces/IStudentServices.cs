@@ -1,6 +1,6 @@
 ﻿using CoursesShop.Data.Entities;
 
-namespace CoursesShop.Service.Abstracts
+namespace CoursesShop.Service.EntityServices.Interfaces
 {
     public interface IStudentServices
     {

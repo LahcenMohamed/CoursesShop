@@ -1,11 +1,11 @@
-﻿using CoursesShop.Service.Interfaces;
+﻿using CoursesShop.Service.UserServices.Interfaces;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
 using MimeKit.Text;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.UserServices.Implementations
 {
     public sealed class EmailServices(IConfiguration configuration) : IEmailServices
     {

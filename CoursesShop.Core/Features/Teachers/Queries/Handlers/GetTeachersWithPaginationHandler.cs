@@ -1,7 +1,7 @@
 ﻿using CoursesShop.Core.Features.Teachers.Queries.Requests;
 using CoursesShop.Core.Wrapper;
 using CoursesShop.Data.Entities;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.EntityServices.Interfaces;
 using MediatR;
 using Microsoft.IdentityModel.Tokens;
 

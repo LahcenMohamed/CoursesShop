@@ -1,7 +1,7 @@
 ﻿using CoursesShop.Core.Bases;
 using CoursesShop.Core.Features.Authentication.Commands.Requests;
 using CoursesShop.Data.Results;
-using CoursesShop.Service.Interfaces;
+using CoursesShop.Service.UserServices.Interfaces;
 using MediatR;
 
 namespace CoursesShop.Core.Features.Authentication.Commands.Handlers

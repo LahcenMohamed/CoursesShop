@@ -1,8 +1,8 @@
-﻿using CoursesShop.Service.Interfaces;
+﻿using CoursesShop.Service.UserServices.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace CoursesShop.Service.Implementations
+namespace CoursesShop.Service.UserServices.Implementations
 {
     public sealed class FileServices(IWebHostEnvironment webHostEnvironment) : IFileServices
     {
