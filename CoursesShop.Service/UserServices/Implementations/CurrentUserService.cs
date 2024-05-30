@@ -17,14 +17,14 @@ namespace CoursesShop.Service.UserServices.Implementations
             _userManager = userManager;
         }
 
-        public int GetUserId()
+        public string GetUserId()
         {
             var userId = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(claim => claim.Type == nameof(ClaimTypes.NameIdentifier)).Value;
             if (userId == null)
             {
                 throw new UnauthorizedAccessException();
             }
-            return int.Parse(userId);
+            return userId;
         }
 
         public async Task<ApplicationUser> GetUserAsync()
