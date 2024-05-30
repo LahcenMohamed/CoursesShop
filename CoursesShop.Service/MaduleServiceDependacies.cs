@@ -13,6 +13,7 @@ namespace CoursesShop.Service
             service.AddTransient<IStudentServices, StudentServices>();
             service.AddTransient<ITeacherServices, TeacherServices>();
             service.AddTransient<ICourseServices, CourseServices>();
+            service.AddTransient<IReviewServices, ReviewServices>();
             service.AddTransient<IUserServices, UsersServices>();
             service.AddTransient<IAuthorizationServices, AutorizationServices>();
             service.AddTransient<IAuthenticationServices, AuthenticationServices>();

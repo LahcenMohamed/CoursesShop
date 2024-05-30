@@ -28,8 +28,8 @@ namespace CoursesShop.Service.UserServices.Implementations
             var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             if (result.Succeeded)
             {
-                var (token, accessToken) = await GetToken(user);
-                var refershtoken = GetRefreshToken(user.UserName);
+                var (token, accessToken, userType) = await GetToken(user);
+                var refershtoken = GetRefreshToken(user.UserName, userType);
 
                 var userRefreshToken = new UserRefreshToken
                 {
@@ -59,11 +59,12 @@ namespace CoursesShop.Service.UserServices.Implementations
 
         public async Task<JwtAuthResult> GetRefreshTokenAsync(ApplicationUser user, JwtSecurityToken jwtToken, DateTime? expiryDate, string refreshToken)
         {
-            var (jwtSecurityToken, newToken) = await GetToken(user);
+            var (jwtSecurityToken, newToken, userType) = await GetToken(user);
 
             var refreshTokenResult = new RefreshToken
             {
                 UserName = jwtToken.Claims.FirstOrDefault(x => x.Type == "UserName").Value,
+                UserType = userType,
                 TokenString = refreshToken,
                 ExpireAt = (DateTime)expiryDate
             };
@@ -148,15 +149,13 @@ namespace CoursesShop.Service.UserServices.Implementations
             return new JwtSecurityTokenHandler().ReadJwtToken(accessToken);
         }
 
-        private async Task<(JwtSecurityToken, string)> GetToken(ApplicationUser applicationUser)
+        private async Task<(JwtSecurityToken, string, string)> GetToken(ApplicationUser applicationUser)
         {
             var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.NameIdentifier,applicationUser.Id),
                     new Claim(ClaimTypes.Name,applicationUser.UserName),
                     new Claim(ClaimTypes.Email,applicationUser.Email),
-                    new Claim(ClaimTypes.Role,"Admin"),
-                    new Claim("TypeId",applicationUser.TypeId ?? "Admin")
                 };
             var roles = await _userManager.GetRolesAsync(applicationUser);
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
@@ -168,14 +167,15 @@ namespace CoursesShop.Service.UserServices.Implementations
                                                                                         , SecurityAlgorithms.HmacSha256Signature));
 
             string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
-            return (token, accessToken);
+            return (token, accessToken, roles.FirstOrDefault());
         }
-        private RefreshToken GetRefreshToken(string username)
+        private RefreshToken GetRefreshToken(string username, string userType)
         {
             var refreshToken = new RefreshToken
             {
                 ExpireAt = DateTime.Now.AddMonths(_jwtSettings.RefreshTokenExpireDate),
                 UserName = username,
+                UserType = userType,
                 TokenString = GenerateRefreshToken()
             };
             return refreshToken;
