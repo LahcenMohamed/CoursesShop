@@ -17,7 +17,7 @@ namespace CoursesShop.Service.EntityServices.Implementations
             string ImageUrl = null;
             if (Image is not null)
             {
-                ImageUrl = await _fileServices.UploadImage("Images/Teachers", Image);
+                ImageUrl = await _fileServices.UploadImageAsync("Images/Teachers", Image);
             }
             teacher.imageUrl = ImageUrl;
             await _teacherRepository.AddAsync(teacher);

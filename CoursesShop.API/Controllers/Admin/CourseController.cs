@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoursesShop.API.Controllers.Admin
 {
-    [Route("api/Admin/[controller]s")]
+    [Route("api/[controller]s")]
     [ApiController]
-    [Authorize("Admin")]
     public sealed class CourseController : AppControllerBase
     {
         [HttpGet]
@@ -32,7 +31,8 @@ namespace CoursesShop.API.Controllers.Admin
             return NewResult(response);
         }
 
-        [HttpDelete("{Id:guid}")]
+        [Authorize("Admin")]
+        [HttpDelete("/api/Admin/Courses/{Id:guid}")]
         public async Task<IActionResult> Delete(string Id)
         {
             var response = await Mediator.Send(new DeleteCourseRequest { Id = Id });

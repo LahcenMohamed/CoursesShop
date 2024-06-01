@@ -1,12 +1,14 @@
 ﻿using CoursesShop.API.Bases;
 using CoursesShop.Core.Features.User.Commands.Requsets;
 using CoursesShop.Core.Features.User.Queries.Requsets;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursesShop.API.Controllers.Admin
 {
     [Route("api/Users")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class ApplicationUserController : AppControllerBase
     {
         [HttpGet]

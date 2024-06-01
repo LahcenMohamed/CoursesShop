@@ -17,6 +17,7 @@ namespace CoursesShop.Service
             service.AddTransient<IUserServices, UsersServices>();
             service.AddTransient<IAuthorizationServices, AutorizationServices>();
             service.AddTransient<IAuthenticationServices, AuthenticationServices>();
+            service.AddTransient<ICurrentUserService, CurrentUserService>();
             service.AddTransient<IFileServices, FileServices>();
             service.AddTransient<IEmailServices, EmailServices>();
             return service;

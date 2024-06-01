@@ -19,7 +19,7 @@ namespace CoursesShop.Service.UserServices.Implementations
 
         public string GetUserId()
         {
-            var userId = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(claim => claim.Type == nameof(ClaimTypes.NameIdentifier)).Value;
+            var userId = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier).Value;
             if (userId == null)
             {
                 throw new UnauthorizedAccessException();

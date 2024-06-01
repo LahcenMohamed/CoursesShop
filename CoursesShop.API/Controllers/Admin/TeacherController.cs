@@ -1,13 +1,14 @@
 ﻿using CoursesShop.API.Bases;
 using CoursesShop.Core.Features.Teachers.Commands.Requests;
 using CoursesShop.Core.Features.Teachers.Queries.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursesShop.API.Controllers.Admin
 {
     [Route("api/Admin/[controller]s")]
     [ApiController]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public sealed class TeacherController : AppControllerBase
     {
         [HttpGet]

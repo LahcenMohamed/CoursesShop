@@ -8,7 +8,7 @@ namespace CoursesShop.Service.UserServices.Implementations
     {
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
 
-        public async Task<string> UploadImage(string Location, IFormFile Image)
+        public async Task<string> UploadImageAsync(string Location, IFormFile Image)
         {
             var path = _webHostEnvironment.WebRootPath + "/" + Location + "/";
             var fileName = Guid.NewGuid().ToString().Replace("-", string.Empty) + Path.GetExtension(Image.FileName);

@@ -8,6 +8,8 @@ namespace CoursesShop.Core.Mapping.Courses
         {
             GetCourseMapper();
             GetCourseWithPagintedMapping();
+            AddCourseMapper();
+            UpdateCourseMapper();
         }
     }
 }
