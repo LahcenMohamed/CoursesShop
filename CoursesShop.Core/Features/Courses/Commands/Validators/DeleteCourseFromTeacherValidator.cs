@@ -9,7 +9,6 @@ namespace CoursesShop.Core.Features.Courses.Commands.Validators
     {
         private readonly ICourseServices _courseServices;
         private readonly ICurrentUserService _currentUserService;
-        private object locker = new object();
 
         public DeleteCourseFromTeacherValidator(ICourseServices courseServices, ICurrentUserService currentUserService)
         {
@@ -20,13 +19,8 @@ namespace CoursesShop.Core.Features.Courses.Commands.Validators
 
         private async void ApplyCustomRule()
         {
-            lock (locker)
-            {
-                var user = _currentUserService.GetUserAsync();
-
-                RuleFor(x => x.CourseId).Must((key, cancellationToken) => _courseServices.IsCourseIdToTeacherId(key.CourseId, user.Result.TypeId)).WithMessage("is not Who created it");
-            }
-
+            var teacherId = _currentUserService.GetTypeId();
+            RuleFor(x => x.CourseId).Must((key, cancellationToken) => _courseServices.IsCourseIdToTeacherId(key.CourseId, teacherId)).WithMessage("is not Who created it");
         }
     }
 }

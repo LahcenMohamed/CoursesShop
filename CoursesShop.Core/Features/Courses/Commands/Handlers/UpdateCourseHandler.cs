@@ -19,8 +19,7 @@ namespace CoursesShop.Core.Features.Courses.Commands.Handlers
         public async Task<Response<string>> Handle(UpdateCourseRequest request, CancellationToken cancellationToken)
         {
             var course = _mapper.Map<Course>(request);
-            var currentUser = await _currentUserService.GetUserAsync();
-            course.TeacherId = currentUser.TypeId;
+            course.TeacherId = _currentUserService.GetTypeId();
             await _courseServices.UpdateAsync(course, request.Image);
 
             return Success(course.Id);

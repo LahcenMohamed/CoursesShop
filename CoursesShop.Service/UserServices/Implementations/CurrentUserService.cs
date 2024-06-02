@@ -42,5 +42,15 @@ namespace CoursesShop.Service.UserServices.Implementations
             var roles = await _userManager.GetRolesAsync(user);
             return roles.ToList();
         }
+
+        public string GetTypeId()
+        {
+            var typeId = _httpContextAccessor.HttpContext.User.Claims.SingleOrDefault(claim => claim.Type == "TypeId").Value;
+            if (typeId == null)
+            {
+                throw new UnauthorizedAccessException();
+            }
+            return typeId;
+        }
     }
 }

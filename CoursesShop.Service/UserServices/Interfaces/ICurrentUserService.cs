@@ -6,6 +6,7 @@ namespace CoursesShop.Service.UserServices.Interfaces
     {
         public Task<ApplicationUser> GetUserAsync();
         public string GetUserId();
+        public string GetTypeId();
         public Task<List<string>> GetCurrentUserRolesAsync();
     }
 }

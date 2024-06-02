@@ -1,11 +1,12 @@
 ﻿using CoursesShop.API.Bases;
 using CoursesShop.Core.Features.Reviews.Commands.Requests;
 using CoursesShop.Core.Features.Reviews.Queries.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoursesShop.API.Controllers.Admin
 {
-    [Route("api/Admin/[controller]s")]
+    [Route("api/[controller]s")]
     [ApiController]
     public sealed class ReviewController : AppControllerBase
     {
@@ -16,6 +17,7 @@ namespace CoursesShop.API.Controllers.Admin
             return NewResult(response);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{Id:guid}")]
         public async Task<IActionResult> Delete(string Id)
         {

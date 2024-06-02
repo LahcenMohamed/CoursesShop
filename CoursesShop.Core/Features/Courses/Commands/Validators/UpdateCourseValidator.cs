@@ -9,7 +9,6 @@ namespace CoursesShop.Core.Features.Courses.Commands.Validators
     {
         private readonly ICourseServices _courseServices;
         private readonly ICurrentUserService _currentUserService;
-        private object locker = new object();
         public UpdateCourseValidator(ICourseServices courseServices, ICurrentUserService currentUserService)
         {
             _courseServices = courseServices;
@@ -20,12 +19,8 @@ namespace CoursesShop.Core.Features.Courses.Commands.Validators
 
         private void ApplycCustomRule()
         {
-            lock (locker)
-            {
-                var user = _currentUserService.GetUserAsync();
-
-                RuleFor(x => x.Id).Must((key, cancellationToken) => _courseServices.IsCourseIdToTeacherId(key.Id, user.Result.TypeId)).WithMessage("is not Who created it");
-            }
+            string teacherId = _currentUserService.GetTypeId();
+            RuleFor(x => x.Id).Must((key, cancellationToken) => _courseServices.IsCourseIdToTeacherId(key.Id, teacherId)).WithMessage("is not Who created it");
         }
 
         private void ApplyRule()

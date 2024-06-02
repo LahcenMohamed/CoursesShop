@@ -16,8 +16,7 @@ namespace CoursesShop.Core.Features.Courses.Queries.Handlers
 
         public async Task<Response<List<GetCourseResult>>> Handle(GetCoursesByTeacherIdRequest request, CancellationToken cancellationToken)
         {
-            var teacher = await _currentUserService.GetUserAsync();
-            string teacherId = teacher.TypeId;
+            string teacherId = _currentUserService.GetTypeId();
             var response = await _courseServices.GetByTeacherIdAsync(teacherId);
             var coursesMapping = _mapper.Map<List<GetCourseResult>>(response);
             return Success(coursesMapping);

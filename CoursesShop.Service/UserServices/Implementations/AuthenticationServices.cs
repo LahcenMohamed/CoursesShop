@@ -156,6 +156,7 @@ namespace CoursesShop.Service.UserServices.Implementations
                     new Claim(ClaimTypes.NameIdentifier,applicationUser.Id),
                     new Claim(ClaimTypes.Name,applicationUser.UserName),
                     new Claim(ClaimTypes.Email,applicationUser.Email),
+                    new Claim("TypeId",applicationUser.TypeId is null ? applicationUser.Id : applicationUser.TypeId)
                 };
             var roles = await _userManager.GetRolesAsync(applicationUser);
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));

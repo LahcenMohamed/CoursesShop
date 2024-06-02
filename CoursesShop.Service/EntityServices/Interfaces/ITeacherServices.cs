@@ -10,6 +10,7 @@ namespace CoursesShop.Service.EntityServices.Interfaces
         public IQueryable<Teacher> FillterAllAsQueryable(string search);
         public Teacher GetById(string Id);
         public Task AddAsync(Teacher teacher, IFormFile? Image);
+        public Task UpdateImageAsync(string teacherId, IFormFile image);
         public Task<bool> IsEmailExistAsync(string Email);
         public bool IsIdExist(string id);
         public Task DeleteAsync(string Id);

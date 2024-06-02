@@ -59,5 +59,12 @@ namespace CoursesShop.Service.EntityServices.Implementations
         {
             return _teacherRepository.GetTableNoTracking().Any(x => x.Id == id);
         }
+
+        public async Task UpdateImageAsync(string teacherId, IFormFile image)
+        {
+            var teacher = GetById(teacherId);
+            teacher.imageUrl = await _fileServices.UploadImageAsync("Images/Teachers", image);
+            await _teacherRepository.UpdateAsync(teacher);
+        }
     }
 }
