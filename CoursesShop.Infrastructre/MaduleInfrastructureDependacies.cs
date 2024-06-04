@@ -16,7 +16,7 @@ namespace CoursesShop.Infrastructure
             service.AddTransient<IRefershTokenRepository, RefershTokenRepository>();
             service.AddTransient<ICourseRepository, CourseRepository>();
             service.AddTransient<IReviewRepository, ReviewRepository>();
-
+            service.AddTransient<IReceiptRepository, ReceiptRepository>();
 
             return service;
         }

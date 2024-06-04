@@ -12,8 +12,16 @@ namespace CoursesShop.Service.EntityServices.Interfaces
         public Course GetById(string Id);
         public Task AddAsync(Course course, IFormFile? Image);
         public Task UpdateAsync(Course course, IFormFile? Image);
+        public Task UpdateRating(string id, double evalution, UpdateRatingType type);
         public bool IsIdExist(string id);
         public bool IsCourseIdToTeacherId(string courseId, string teacherId);
         public Task DeleteAsync(string Id);
+    }
+
+    public enum UpdateRatingType : byte
+    {
+        Add = 0,
+        Update = 1,
+        Delete = 2
     }
 }

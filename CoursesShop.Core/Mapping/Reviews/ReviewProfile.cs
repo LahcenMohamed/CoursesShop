@@ -7,6 +7,8 @@ namespace CoursesShop.Core.Mapping.Reviews
         public ReviewProfile()
         {
             GetReviewsByCourseIdMapper();
+            AddReviewMapper();
+            UpdateReviewMapper();
         }
     }
 }

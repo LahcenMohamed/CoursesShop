@@ -79,6 +79,33 @@ namespace CoursesShop.Service.EntityServices.Implementations
             return _courseRepository.GetTableNoTracking().Any(x => x.Id == courseId && x.TeacherId == teacherId);
         }
 
+        public async Task UpdateRating(string id, double evalution, UpdateRatingType type)
+        {
+            var course = await _courseRepository.GetByIdAsync(id);
+            var result = _courseRepository.GetTableNoTracking()
+                 .Include(x => x.Reviews)
+                 .Where(x => x.Id == id)
+                 .Select(x => new
+                 {
+                     ReviewCount = x.Reviews.Count,
+                 })
+                 .FirstOrDefault();
 
+            double newAverge;
+            if (type == UpdateRatingType.Add)
+            {
+                newAverge = (course.ReviewsAverge * (result.ReviewCount - 1) + evalution) / result.ReviewCount;
+            }
+            else if (type == UpdateRatingType.Update)
+            {
+                newAverge = (course.ReviewsAverge * (result.ReviewCount) + evalution) / result.ReviewCount;
+            }
+            else
+            {
+                newAverge = (course.ReviewsAverge * (result.ReviewCount + 1) - evalution) / result.ReviewCount;
+            }
+            course.ReviewsAverge = newAverge;
+            await _courseRepository.UpdateAsync(course);
+        }
     }
 }
