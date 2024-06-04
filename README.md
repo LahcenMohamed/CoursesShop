@@ -31,7 +31,7 @@ The Courses Shop APIs is a asp net core api project for manage a shop for course
 1. Clone the repository:
     ```bash
     git clone https://github.com/LahcenMohamed/CoursesShop.git
-    cd dailylife-api
+    cd CoursesShopDbContext-api
     ```
 
 2. Restore dependencies:
